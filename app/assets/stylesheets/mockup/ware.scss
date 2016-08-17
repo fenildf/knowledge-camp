@@ -16,4 +16,27 @@
       border: 1px solid #D3D3D3;
     }
   }
+
+  .simple-document-ware-show-page-shower{
+    max-width: 964px;
+    border: 1px solid #D3D3D3;
+    .page-controller{
+      text-align: center;
+      background-color: #F0F0F0;
+      padding: 10px;
+      input{
+        width: 50px;
+      }
+      .icon{
+        font-size: 24px;
+      }
+      a.icon-link{
+        color: #aab1bb;
+
+        &:hover{
+          color: #53C096;
+        }
+      }
+    }
+  }
 }

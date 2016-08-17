@@ -92,8 +92,8 @@ module WareFormer
           []
       }
 
-      field :kind, ->(instance) {
-        instance.file_entity.try(:kind)
+      field :is_ppt, ->(instance) {
+        instance.file_entity.try(:ppt?)
       }
 
       logic :learned, ->(instance, user) {
