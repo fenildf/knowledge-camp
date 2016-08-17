@@ -92,6 +92,10 @@ module WareFormer
           []
       }
 
+      field :kind, ->(instance) {
+        instance.file_entity.try(:kind)
+      }
+
       logic :learned, ->(instance, user) {
         percent = instance.read_percent_of_user(user)
         learned = 'done' if percent == 100

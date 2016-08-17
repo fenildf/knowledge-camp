@@ -1,3 +1,19 @@
 .simple-document-ware-show-page{
   overflow-y: auto;
+  margin: 30px;
+
+  .simple-document-ware-show{
+
+  }
+
+  .simple-document-ware-show-vertical{
+    max-width: 817px;
+    img{
+      margin: 0 0 6px;
+      background-color: #fff;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #D3D3D3;
+    }
+  }
 }
