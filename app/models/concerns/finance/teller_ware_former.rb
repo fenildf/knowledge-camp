@@ -49,7 +49,7 @@ module Finance::TellerWareFormer
       }
 
       url :show_url, ->(instance) {
-        manager_finance_preview_path(number: instance.number)
+        teller_ware_path(id: instance.number)
       }
 
       url :preview_url, ->(instance) {
