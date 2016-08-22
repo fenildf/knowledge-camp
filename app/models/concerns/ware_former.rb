@@ -87,9 +87,7 @@ module WareFormer
         end
       }
       field :document_urls, ->(instance) {
-        instance.file_entity ?
-          instance.file_entity.transcode_urls("jpg") :
-          []
+        instance.file_entity.try(:transcode_urls, "jpg") or []
       }
 
       field :is_ppt, ->(instance) {
