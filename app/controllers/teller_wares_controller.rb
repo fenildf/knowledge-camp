@@ -1,11 +1,12 @@
 class TellerWaresController < ApplicationController
+  before_filter :pundit_wares
   layout "new_version_base"
 
   def show
     ware = ::Finance::TellerWare.where(number: params[:id]).first
 
     # 如果在此用户业务分类内，则直接设置阅读进度100%
-    ware.set_read_percent_by_user(current_user, 100) if current_user and ware.in_business_categories?(current_user)
+    ware.set_read_percent_by_user(current_user, 100) if current_user and current_user.teller? and ware.in_business_categories?(current_user)
 
     num = ware.number[0...3]
 
@@ -38,5 +39,10 @@ class TellerWaresController < ApplicationController
       .logic(:selects)
       .data
     render json: data
+  end
+
+  private
+  def pundit_wares
+    authorize :wares, "#{action_name}?"
   end
 end

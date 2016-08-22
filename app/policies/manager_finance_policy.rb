@@ -1,5 +1,9 @@
 class ManagerFinancePolicy < ManagerPolicy
   def preview?
-    true
+    supervisor? or admin?
+  end
+
+  def hmdm?
+    supervisor? or admin?
   end
 end
