@@ -5,7 +5,7 @@
     </a>
 
   show: ->
-    TellerScreenButton.load_modal @props.hmdm
+    TellerScreenButton.load_modal @props.hmdm, @props.url
 
   statics:
     Modal: React.createClass
@@ -37,14 +37,13 @@
       stop: ->
         @refs.screen.stop()
 
-    load_modal: (hmdm)->
-      hmdm_url = window.hmdm_url
-      unless hmdm_url?
-        console.warn '未设置 window.hmdm_url'
+    load_modal: (hmdm, url)->
+      unless url?
+        console.warn '未传入hmdm url'
         return 
 
       jQuery.ajax
-        url: hmdm_url
+        url: url
         data: hmdm: hmdm
       .done (screen)=>
         jQuery.open_modal(

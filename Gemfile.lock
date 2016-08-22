@@ -39,8 +39,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
-  revision: 6ad7ed6bc7e9bfdfcd85ceec25f84023048754de
-  ref: 6ad7ed6
+  revision: dc2ef6c1a214b44733229ca4f4fd2b3f166546d1
+  ref: dc2ef6c
   specs:
     file-part-upload (3.2.0)
       enumerize

@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    true
   end
 
   def create?
@@ -49,5 +49,18 @@ class ApplicationPolicy
     def resolve
       scope
     end
+  end
+
+  protected
+  def admin?
+    user.admin?
+  end
+
+  def supervisor?
+    user.supervisor?
+  end
+
+  def teller?
+    user.teller?
   end
 end

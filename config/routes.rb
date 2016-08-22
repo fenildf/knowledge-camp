@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   end
   resources :simple_video_wares
   resources :simple_document_wares
+  resources :teller_wares do
+    get :hmdm, on: :collection
+  end
 
   scope :path => "/manager", module: 'manager', as: :manager do
     get "dashboard" => "dashboard#index"

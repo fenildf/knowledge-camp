@@ -36,15 +36,28 @@ class Manager::Finance::TellerWaresController < ApplicationController
   def preview
     ware = ::Finance::TellerWare.where(number: params[:number]).first
 
-    # 如果在此用户业务分类内，则直接设置阅读进度100%
-    ware.set_read_percent_by_user(current_user, 100) if current_user and ware.in_business_categories?(current_user)
+    num = ware.number[0...3]
 
     @page_name = "manager_finance_teller_ware_preview"
-    @component_data = DataFormer.new(ware)
-      .logic(:actions)
-      .logic(:relative_wares)
-      .logic(:business_kind_str)
-      .data
+    @component_data = {
+      ware: DataFormer.new(ware)
+              .logic(:actions)
+              .logic(:business_kind_str)
+              .data,
+      hmdm_url: hmdm_teller_wares_path,
+      relative_wares: Finance::TellerWare.where(number: /^#{num}/)
+          .order(number: :asc)
+          .select {|x|
+            x.id != ware.id
+          }
+          .map {|x|
+            DataFormer.new(x)
+              .url(:show_url)
+              .logic(:business_kind_str)
+              .data
+          }
+
+    }
     render "/mockup/page", layout: 'finance/preview'
   end
 
