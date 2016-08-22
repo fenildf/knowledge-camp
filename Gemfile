@@ -61,7 +61,7 @@ gem "elasticsearch-simple",
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     github: "mindpin/file-part-upload",
-    ref: "6164fd3"
+    ref: "6ad7ed6"
 
 # -----金融学院相关
 gem 'kc_courses',

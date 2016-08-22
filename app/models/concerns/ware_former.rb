@@ -92,6 +92,10 @@ module WareFormer
           []
       }
 
+      field :is_ppt, ->(instance) {
+        instance.file_entity.try(:ppt?)
+      }
+
       logic :learned, ->(instance, user) {
         percent = instance.read_percent_of_user(user)
         learned = 'done' if percent == 100
