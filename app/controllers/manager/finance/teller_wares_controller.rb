@@ -52,9 +52,10 @@ class Manager::Finance::TellerWaresController < ApplicationController
           }
           .map {|x|
             DataFormer.new(x)
-              .url(:show_url)
               .logic(:business_kind_str)
-              .data
+              .data.merge(
+                show_url: manager_finance_preview_path(number: x.number)
+              )
           }
 
     }

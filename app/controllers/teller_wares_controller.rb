@@ -25,9 +25,8 @@ class TellerWaresController < ApplicationController
                         .map {|x|
                           DataFormer.new(x)
                             .logic(:business_kind_str)
-                            .data.merge(
-                              show_url: teller_ware_path(x.number)
-                            )
+                            .url(:show_url)
+                            .data
                         }
     }
     render "/mockup/page", layout: 'new_version_ware'
