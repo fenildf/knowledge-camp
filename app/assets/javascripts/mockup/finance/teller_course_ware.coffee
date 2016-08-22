@@ -1,8 +1,8 @@
 @TellerCourseWare = React.createClass
   render: ->
     <div className='teller-course-ware'>
-      <TellerCourseWare.Sidebar data={@baseinfo()} />
-      <TellerCourseWare.Panel ware={@baseinfo()} data={@actioninfo()} />
+      <TellerCourseWare.Sidebar data={@baseinfo()} relative_wares={@props.data.relative_wares} />
+      <TellerCourseWare.Panel ware={@baseinfo()} data={@actioninfo()} hmdm_url={@props.data.hmdm_url} />
     </div>
 
   baseinfo: ->
@@ -40,11 +40,11 @@
             {gaishu}
 
             {
-              if data.relative_wares.length > 0
+              if @props.relative_wares.length > 0
                 <div style={marginBottom: '2rem'}>
                   <label><b>相关交易</b></label>
                   {
-                    for ware in data.relative_wares
+                    for ware in @props.relative_wares
                       <a key={ware.id} className='relative-ware' href={ware.show_url} target='_blank'>
                         <div className='number'><b>{ware.number} - {ware.business_kind_str}</b></div>
                         <div>{ware.name}</div>
@@ -58,7 +58,7 @@
     Panel: React.createClass
       render: ->
         <div className='paper'>
-          <OEP ware={@props.ware} data={@props.data} />
+          <OEP ware={@props.ware} data={@props.data} hmdm_url={@props.hmdm_url} />
         </div>
 
 
@@ -80,7 +80,7 @@ OEP = React.createClass
     <div className='flow-course-ware'>
       <OEP.Header data={@state.graph} />
       <OEP.Nodes oep={@} data={@state.graph} />
-      <OEP.TeachingDialog oep={@} ref='dialog' data={@state.graph} ware={@props.ware} />
+      <OEP.TeachingDialog oep={@} ref='dialog' data={@state.graph} ware={@props.ware} hmdm_url={@props.hmdm_url} />
     </div>
 
   componentDidUpdate: ->
@@ -264,7 +264,7 @@ OEP = React.createClass
               </div>
               {
                 for hmdm in action.screen_ids
-                  <TellerScreenButton key={hmdm} hmdm={hmdm} />
+                  <TellerScreenButton key={hmdm} hmdm={hmdm} url={@props.hmdm_url} />
               }
             </div>
 
