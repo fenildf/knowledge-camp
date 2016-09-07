@@ -7,6 +7,8 @@
 //= require react_ujs
 
 //= require semantic
+// 
+//= require mongoid_react_scaffold
 
 // https://github.com/medialize/URI.js
 //= require URIjs

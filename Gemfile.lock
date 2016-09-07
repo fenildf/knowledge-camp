@@ -65,6 +65,12 @@ GIT
     mongoid-simple-redis-cache (0.1.0)
       redis (~> 3.2)
 
+GIT
+  remote: git://github.com/mindpin/mongoid_react_scaffold.git
+  revision: a76c7c496a059c5bb6cd400ee87e8d17e89e49a7
+  specs:
+    mongoid_react_scaffold (0.1.0)
+
 GEM
   remote: https://ruby.taobao.org/
   remote: https://rails-assets.org/
@@ -351,6 +357,8 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    semantic-ui-sass (2.2.2.2)
+      sass (>= 3.2)
     slop (3.6.0)
     spring (1.7.1)
     sprockets (3.4.0)
@@ -417,6 +425,7 @@ DEPENDENCIES
   mina (= 0.3.7)
   mongoid (~> 4.0.0)
   mongoid-simple-redis-cache!
+  mongoid_react_scaffold!
   non-stupid-digest-assets
   phone_number_check_mod!
   pry
@@ -436,6 +445,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  semantic-ui-sass (~> 2.2.2.2)
   spring
   sprockets (= 3.4.0)
   sprockets-coffee-react (= 3.0.1)

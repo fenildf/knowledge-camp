@@ -105,6 +105,13 @@ gem 'non-stupid-digest-assets'
 
 gem "pundit", "1.1.0"
 
+# 手脚架
+gem 'mongoid_react_scaffold', github: 'mindpin/mongoid_react_scaffold'
+
+# 以下为其余依赖项
+# for semantic
+gem 'semantic-ui-sass', '~> 2.2.2.2'
+
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
 gem 'rails-assets-semantic'
