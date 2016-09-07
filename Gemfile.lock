@@ -359,6 +359,8 @@ GEM
       websocket (~> 1.0)
     semantic-ui-sass (2.2.2.2)
       sass (>= 3.2)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     spring (1.7.1)
     sprockets (3.4.0)
@@ -446,6 +448,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver
   semantic-ui-sass (~> 2.2.2.2)
+  shoulda-matchers
   spring
   sprockets (= 3.4.0)
   sprockets-coffee-react (= 3.0.1)

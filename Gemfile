@@ -25,6 +25,9 @@ group :development, :test do
   gem "spring"
   gem "pry"
   gem "pry-byebug"
+
+  # 完善rspec for rails测试
+  gem 'shoulda-matchers'
 end
 
 group :test do
