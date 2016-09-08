@@ -63,6 +63,8 @@ Rails.application.routes.draw do
     get :hmdm, on: :collection
   end
 
+  resources :articles
+
   scope :path => "/manager", module: 'manager', as: :manager do
     get "dashboard" => "dashboard#index"
 

@@ -1,10 +1,10 @@
-marked.setOptions {
-  highlight: (code, lang, callback)->
-    hljs.highlightAuto(code).value
-}
-
 @ManagerArticlePage = React.createClass
   componentDidMount: ->
+    marked.setOptions {
+      highlight: (code, lang, callback)->
+        hljs.highlightAuto(code).value
+    }
+
     @setState
       content: marked(@props.data.manager_article.content)
 
@@ -13,11 +13,13 @@ marked.setOptions {
 
   render: ->
     <div className='manager_article-page'>
-      <div className="ui header center aligned segment">
-        {@props.data.manager_article.title}
-      </div>
+      <div className="segment ui">
+        <h1 className="ui header center aligned">
+          {@props.data.manager_article.title}
+        </h1>
 
-      <ManagerArticlePage.Content content={@state.content} />
+        <ManagerArticlePage.Content content={@state.content} />
+      </div>
     </div>
 
   #add_manager_article: (manager_article)->
