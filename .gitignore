@@ -38,3 +38,6 @@ public/assets/
 backup
 
 selenium/
+
+# rvm
+.ruby-gemset
