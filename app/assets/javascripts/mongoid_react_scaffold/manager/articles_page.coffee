@@ -87,6 +87,7 @@
       render: ->
         {
           TextInputField
+          TextAreaField
           Submit
         } = DataForm
 
