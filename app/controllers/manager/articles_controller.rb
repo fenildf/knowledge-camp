@@ -3,6 +3,7 @@ class Manager::ArticlesController < Manager::ApplicationController
     @page_name = "manager_articles"
     manager_articles = Article.all.map do |manager_article|
       DataFormer.new(manager_article)
+        .url(:manager_show_url)
         .url(:manager_update_url)
         .url(:manager_delete_url)
         .data
@@ -16,11 +17,28 @@ class Manager::ArticlesController < Manager::ApplicationController
     render "/react/page"
   end
 
+  def show
+    @page_name = "manager_article"
+    manager_article = Article.find params[:id]
+
+    item = DataFormer.new(manager_article)
+        .url(:manager_update_url)
+        .url(:manager_delete_url)
+        .data
+
+    @component_data = {
+      manager_article: item
+    }
+
+    render "/react/page"
+  end
+
   def create
     manager_article = Article.new manager_article_params
 
     save_model(manager_article, "manager_article") do |_manager_article|
       DataFormer.new(_manager_article)
+        .url(:manager_show_url)
         .url(:manager_update_url)
         .url(:manager_delete_url)
         .data
@@ -32,6 +50,7 @@ class Manager::ArticlesController < Manager::ApplicationController
 
     update_model(manager_article, manager_article_params, "manager_article") do |_manager_article|
       DataFormer.new(_manager_article)
+        .url(:manager_show_url)
         .url(:manager_update_url)
         .url(:manager_delete_url)
         .data

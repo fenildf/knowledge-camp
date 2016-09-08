@@ -7,7 +7,11 @@
 //= require react_ujs
 
 //= require semantic
-// 
+//
+
+// marked markdown高亮
+//= require marked
+
 //= require mongoid_react_scaffold
 
 // https://github.com/medialize/URI.js

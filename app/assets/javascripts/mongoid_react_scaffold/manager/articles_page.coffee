@@ -123,7 +123,8 @@
           data_set: @props.data.map (x)=>
             id: x.id
 
-            title: x.title
+            title:
+              <a href={x.manager_show_url}>{x.title}</a>
             ops:
               <div>
                 <a href='javascript:;' className='ui basic button blue mini' onClick={@edit(x)}>

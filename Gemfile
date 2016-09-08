@@ -125,3 +125,5 @@ gem 'rails-assets-URIjs'
 gem 'rails-assets-immutable'
 # https://github.com/Olical/EventEmitter/blob/master/docs/guide.md
 gem 'rails-assets-eventEmitter'
+# https://github.com/chjj/marked
+gem 'rails-assets-marked'

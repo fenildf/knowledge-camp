@@ -26,6 +26,10 @@ module ArticleFormer
       url :manager_delete_url, ->(instance) {
         manager_article_path(instance)
       }
+
+      url :manager_show_url, ->(instance) {
+        manager_article_path(instance)
+      }
     end
   end
 end

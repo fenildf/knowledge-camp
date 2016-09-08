@@ -288,6 +288,7 @@ GEM
     rails-assets-eventEmitter (4.3.0)
     rails-assets-immutable (3.7.6)
     rails-assets-jquery (2.2.3)
+    rails-assets-marked (0.3.6)
     rails-assets-semantic (2.1.8)
       rails-assets-jquery (>= 1.8)
     rails-deprecated_sanitizer (1.0.3)
@@ -440,6 +441,7 @@ DEPENDENCIES
   rails-assets-URIjs
   rails-assets-eventEmitter
   rails-assets-immutable
+  rails-assets-marked
   rails-assets-semantic
   react-rails (= 1.2.0)
   redis (~> 3.2)
