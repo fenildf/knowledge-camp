@@ -66,6 +66,8 @@ Rails.application.routes.draw do
   scope :path => "/manager", module: 'manager', as: :manager do
     get "dashboard" => "dashboard#index"
 
+    # 文章维护
+    resources :articles
     # 督导员维护
     resources :supervisors
     # 柜员维护
