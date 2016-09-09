@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   layout "new_version_base"
 
   def index
-    @page_name = "articles"
-    articles = Article.all.map do |article|
+    articles = Article.page(params[:page]).per(2)
+    items = articles.map do |article|
       DataFormer.new(article)
         .url(:show_url)
         .url(:update_url)
@@ -12,11 +12,22 @@ class ArticlesController < ApplicationController
     end
 
     @component_data = {
-      articles: articles,
-      create_url: articles_path
+      articles: items,
+      paginate: paginate_data(articles),
+      next_page_url: articles_path,
     }
 
-    render "/react/page"
+    respond_to do |f|
+      f.html{
+        @page_name = "articles"
+        render "/react/page"
+      }
+      f.json{
+        render json: {
+          data: @component_data
+        }
+      }
+    end
   end
 
   def show

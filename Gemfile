@@ -97,7 +97,7 @@ gem 'phone_number_check_mod',
 gem 'sprockets', '3.4.0'
 gem 'sprockets-rails', '2.3.3'
 
-gem 'react-rails', '1.2.0'
+gem 'react-rails', '~> 1.5.0'
 gem 'sprockets-coffee-react', '3.0.1'
 
 # 控制台
@@ -127,3 +127,6 @@ gem 'rails-assets-immutable'
 gem 'rails-assets-eventEmitter'
 # https://github.com/chjj/marked
 gem 'rails-assets-marked'
+# 滚动翻页
+# https://github.com/seatgeek/react-infinite
+gem 'rails-assets-react-infinite'

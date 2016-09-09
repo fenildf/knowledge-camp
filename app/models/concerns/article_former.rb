@@ -19,6 +19,10 @@ module ArticleFormer
         article_path(instance)
       }
 
+      url :show_url, ->(instance) {
+        article_path(instance)
+      }
+
       url :manager_update_url, ->(instance) {
         manager_article_path(instance)
       }

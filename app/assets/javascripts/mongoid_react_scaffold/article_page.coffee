@@ -26,7 +26,7 @@
   statics:
     Content: React.createClass
       componentDidUpdate: ->
-        @refs.test.getDOMNode().innerHTML = @props.content
+        @refs.test.innerHTML = @props.content
 
       render: ->
         <div ref='test' className="content" />

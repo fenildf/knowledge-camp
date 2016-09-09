@@ -44,6 +44,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def paginate_data kaminari_scope
+    {
+      total_pages: kaminari_scope.num_pages,
+      current_page: kaminari_scope.current_page,
+      per_page: kaminari_scope.size,
+      total_count: kaminari_scope.total_count
+    }
+  end
+
   # 注册请求允许 user[:name]
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
