@@ -67,7 +67,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/mongoid_react_scaffold.git
-  revision: a76c7c496a059c5bb6cd400ee87e8d17e89e49a7
+  revision: 3c6a8b7a770a2649eddf38adcbf050c4e2fed212
+  ref: 3c6a8b7
   specs:
     mongoid_react_scaffold (0.1.0)
 
@@ -311,12 +312,12 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
-    react-rails (1.5.0)
+    react-rails (1.8.1)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
       execjs
-      rails (>= 3.2)
+      railties (>= 3.2)
       tilt
     redis (3.3.1)
     ref (2.0.0)
@@ -447,7 +448,7 @@ DEPENDENCIES
   rails-assets-marked
   rails-assets-react-infinite
   rails-assets-semantic
-  react-rails (~> 1.5.0)
+  react-rails (~> 1.8.0)
   redis (~> 3.2)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)

@@ -97,7 +97,7 @@ gem 'phone_number_check_mod',
 gem 'sprockets', '3.4.0'
 gem 'sprockets-rails', '2.3.3'
 
-gem 'react-rails', '~> 1.5.0'
+gem 'react-rails', '~> 1.8.0'
 gem 'sprockets-coffee-react', '3.0.1'
 
 # 控制台
@@ -109,7 +109,9 @@ gem 'non-stupid-digest-assets'
 gem "pundit", "1.1.0"
 
 # 手脚架
-gem 'mongoid_react_scaffold', github: 'mindpin/mongoid_react_scaffold'
+gem 'mongoid_react_scaffold',
+  github: 'mindpin/mongoid_react_scaffold',
+  ref: "3c6a8b7"
 
 # 以下为其余依赖项
 # for semantic
