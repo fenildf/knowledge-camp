@@ -7,9 +7,9 @@ module ArticleFormer
       field :title
       field :content
 
-      #logic :method, ->(instance) {
-      #  instance.method
-      #}
+      logic :ware_id, ->(instance) {
+        instance.articleable_id.to_s if instance.articleable_is_ware?
+      }
 
       url :update_url, ->(instance) {
         article_path(instance)
@@ -21,6 +21,14 @@ module ArticleFormer
 
       url :show_url, ->(instance) {
         article_path(instance)
+      }
+
+      url :manager_new_url, ->(instance) {
+        new_manager_article_path(instance)
+      }
+
+      url :manager_edit_url, ->(instance) {
+        edit_manager_article_path(instance)
       }
 
       url :manager_update_url, ->(instance) {

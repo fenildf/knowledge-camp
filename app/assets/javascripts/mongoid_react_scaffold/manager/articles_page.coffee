@@ -15,22 +15,22 @@
       else
         <div>
           <ManagerArticlesPage.CreateBtn data={@props.data} page={@} />
-          <ManagerArticlesPage.Table data={@state.manager_articles} page={@} />
+          <ManagerArticlesPage.Table articles={@state.manager_articles} data={@props.data} page={@} />
         </div>
     }
     </div>
 
-  add_manager_article: (manager_article)->
-    manager_articles = Immutable.fromJS @state.manager_articles
-    manager_articles = manager_articles.push manager_article
-    @setState manager_articles: manager_articles.toJS()
+  #add_manager_article: (manager_article)->
+    #manager_articles = Immutable.fromJS @state.manager_articles
+    #manager_articles = manager_articles.push manager_article
+    #@setState manager_articles: manager_articles.toJS()
 
-  update_manager_article: (manager_article)->
-    manager_articles = Immutable.fromJS @state.manager_articles
-    manager_articles = manager_articles.map (x)->
-      x = x.merge manager_article if x.get('id') is manager_article.id
-      x
-    @setState manager_articles: manager_articles.toJS()
+  #update_manager_article: (manager_article)->
+    #manager_articles = Immutable.fromJS @state.manager_articles
+    #manager_articles = manager_articles.map (x)->
+      #x = x.merge manager_article if x.get('id') is manager_article.id
+      #x
+    #@setState manager_articles: manager_articles.toJS()
 
   delete_manager_article: (manager_article)->
     manager_articles = Immutable.fromJS @state.manager_articles
@@ -41,77 +41,73 @@
   statics:
     CreateBtn: React.createClass
       render: ->
-        <a className='ui button green mini' href='javascript:;' onClick={@show_modal}>
+        <a className='ui button green mini' href={@props.data.manager_new_url}>
           <i className='icon plus' />
           创建
         </a>
 
-      show_modal: ->
-        params =
-          url: @props.data.create_url
-          title: '创建'
-          page: @props.page
+    #Form: React.createClass
+      #render: ->
+        #{
+          #TextInputField
+          #TextAreaField
+          #SelectField
+          #Submit
+        #} = DataForm
 
-        jQuery.open_modal <ManagerArticlesPage.Form {...params} />
+        #layout =
+          #label_width: '100px'
 
-    Form: React.createClass
-      render: ->
-        {
-          TextInputField
-          TextAreaField
-          Submit
-        } = DataForm
+        #<div>
+          #<h3 className='ui header'>{@props.title}</h3>
+          #<SimpleDataForm
+            #model='manager_article'
+            #post={@props.url}
+            #done={@done}
+          #>
 
-        layout =
-          label_width: '100px'
+            #<TextInputField {...layout} label='标题：' name='title' required />
+            #<TextAreaField {...layout} label='内容：' name='content' required />
+            #<SelectField {...layout} label='课件：' name='ware_id' required values={@props.wares} />
+            #<Submit {...layout} text='确定保存' />
+          #</SimpleDataForm>
+        #</div>
 
-        <div>
-          <h3 className='ui header'>{@props.title}</h3>
-          <SimpleDataForm
-            model='manager_article'
-            post={@props.url}
-            done={@done}  
-          >
+      #done: (data)->
+        #@props.page.add_manager_article data.manager_article
+        #@state.close()
 
-            <TextInputField {...layout} label='标题：' name='title' required />
-            <TextAreaField {...layout} label='内容：' name='content' required />
-            <Submit {...layout} text='确定保存' />
-          </SimpleDataForm>
-        </div>
+    #UpdateForm: React.createClass
+      #render: ->
+        #{
+          #TextInputField
+          #TextAreaField
+          #SelectField
+          #Submit
+        #} = DataForm
 
-      done: (data)->
-        @props.page.add_manager_article data.manager_article
-        @state.close()
+        #layout =
+          #label_width: '100px'
 
-    UpdateForm: React.createClass
-      render: ->
-        {
-          TextInputField
-          TextAreaField
-          Submit
-        } = DataForm
+        #<div>
+          #<h3 className='ui header'>{@props.title}</h3>
+          #<SimpleDataForm
+            #model='manager_article'
+            #put={@props.url}
+            #done={@done}
+            #data={@props.data}  
+          #>
 
-        layout =
-          label_width: '100px'
+            #<TextInputField {...layout} label='标题：' name='title' required />
+            #<TextAreaField {...layout} label='内容：' name='content' required />
+            #<SelectField {...layout} label='课件：' name='ware_id' required values={@props.wares} />
+            #<Submit {...layout} text='确定保存' />
+          #</SimpleDataForm>
+        #</div>
 
-        <div>
-          <h3 className='ui header'>{@props.title}</h3>
-          <SimpleDataForm
-            model='manager_article'
-            put={@props.url}
-            done={@done}
-            data={@props.data}  
-          >
-
-            <TextInputField {...layout} label='标题：' name='title' required />
-            <TextAreaField {...layout} label='内容：' name='content' required />
-            <Submit {...layout} text='确定保存' />
-          </SimpleDataForm>
-        </div>
-
-      done: (data)->
-        @props.page.update_manager_article data.manager_article
-        @state.close()
+      #done: (data)->
+        #@props.page.update_manager_article data.manager_article
+        #@state.close()
 
     Table: React.createClass
       render: ->
@@ -120,14 +116,14 @@
 
             title: '标题'
             ops: '操作'
-          data_set: @props.data.map (x)=>
+          data_set: @props.articles.map (x)=>
             id: x.id
 
             title:
               <a href={x.manager_show_url}>{x.title}</a>
             ops:
               <div>
-                <a href='javascript:;' className='ui basic button blue mini' onClick={@edit(x)}>
+                <a href={x.manager_edit_url} className='ui basic button blue mini'>
                   <i className='icon edit' /> 修改
                 </a>
                 <a href='javascript:;' className='ui basic button red mini' onClick={@delete(x)}>
@@ -141,6 +137,7 @@
           td_classes: {
             ops: 'collapsing'
           }
+          paginate: @props.data.paginate
         }
 
         <div className='ui segment'>
@@ -154,6 +151,7 @@
             title: '修改'
             page: @props.page
             data: manager_article
+            wares: @props.data.wares
 
           jQuery.open_modal <ManagerArticlesPage.UpdateForm {...params} />
 
