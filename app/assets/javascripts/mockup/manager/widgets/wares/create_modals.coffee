@@ -38,7 +38,7 @@ CreateWareForm =
       # 停止上传组件上传
       @refs.upload?.stop?()
 
-      React.unmountComponentAtNode @state.$modal_dom.find('.content')[0]
+      ReactDOM.unmountComponentAtNode @state.$modal_dom.find('.content')[0]
       
       @state
         .$modal_dom
@@ -60,7 +60,7 @@ open_modal = (component)->
   """
     .appendTo document.body
 
-  a = React.render component, $dom.find('.content')[0]
+  a = ReactDOM.render component, $dom.find('.content')[0]
   a.setState $modal_dom: $dom
 
   $dom
