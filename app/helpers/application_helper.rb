@@ -32,6 +32,16 @@ module ApplicationHelper
         ]
       },
       {
+        name: '文章管理',
+        funcs: [
+          {
+            name: '文章列表',
+            url: manager_articles_path,
+            icon: 'file text'
+          },
+        ]
+      },
+      {
         name: '培训策略管理',
         funcs: [
           {
