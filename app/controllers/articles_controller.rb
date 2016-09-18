@@ -1,3 +1,5 @@
+require "yaml"
+
 class ArticlesController < ApplicationController
   layout "new_version_base"
 
@@ -6,8 +8,6 @@ class ArticlesController < ApplicationController
     items = articles.map do |article|
       DataFormer.new(article)
         .url(:show_url)
-        .url(:update_url)
-        .url(:delete_url)
         .data
     end
 
@@ -35,8 +35,6 @@ class ArticlesController < ApplicationController
     article = Article.find params[:id]
 
     item = DataFormer.new(article)
-        .url(:update_url)
-        .url(:delete_url)
         .data
 
     @component_data = {
@@ -44,6 +42,16 @@ class ArticlesController < ApplicationController
     }
 
     render "/react/page"
+  end
+
+  def landing
+    data = YAML.load_file "config/landing.yml"
+
+    @component_data = data["landing"]
+
+    @page_name = "article_landing"
+
+    render "/react/page", layout: "new_version_ware"
   end
 end
 

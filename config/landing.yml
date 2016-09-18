@@ -1,0 +1,47 @@
+landing:
+  top:
+    - title:    "测试1"
+      img:      "http://placekitten.com/800/300"
+      show_url: "/articles/57cfe4ddd4d1236fcc000000"
+
+    - title:    "测试2"
+      img:      "http://placekitten.com/600/300"
+      show_url: "/articles/57d24677d4d123199e000001"
+
+    - title:    "测试3"
+      img:      "http://placekitten.com/500/400"
+      show_url: "/articles/57d24677d4d123199e000002"
+
+  cats:
+    - name: "分类1"
+      articles:
+        - title: "分类1文章1"
+          show_url: "/articles/57cfe4ddd4d1236fcc000000"
+          img:      "http://placekitten.com/200/200"
+        - title: "分类1文章2"
+          show_url: "/articles/57d24677d4d123199e000001"
+          img:      "http://placekitten.com/200/205"
+        - title: "分类1文章3"
+          show_url: "/articles/57d24677d4d123199e000002"
+          img:      "http://placekitten.com/205/200"
+
+    - name: "分类2"
+      articles:
+        - title: "分类2文章1"
+          show_url: "/articles/57cfe4ddd4d1236fcc000000"
+          img:      "http://placekitten.com/210/200"
+        - title: "分类2文章2"
+          show_url: "/articles/57d24677d4d123199e000001"
+          img:      "http://placekitten.com/200/210"
+
+    - name: "分类3"
+      articles:
+        - title: "分类3文章1"
+          show_url: "/articles/57cfe4ddd4d1236fcc000000"
+          img:      "http://placekitten.com/190/200"
+        - title: "分类3文章2"
+          show_url: "/articles/57cfe4ddd4d1236fcc000000"
+          img:      "http://placekitten.com/201/200"
+        - title: "分类3文章3"
+          show_url: "/articles/57cfe4ddd4d1236fcc000000"
+          img:      "http://placekitten.com/200/201"

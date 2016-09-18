@@ -13,6 +13,8 @@ class Article
   validates :title, presence: true
   validates :content, presence: true
 
+  scope :recent, ->{ order(id: :desc)}
+
   def articleable_is_ware?
     !!KC_WARE_REGEXP.match(articleable_type)
   end
