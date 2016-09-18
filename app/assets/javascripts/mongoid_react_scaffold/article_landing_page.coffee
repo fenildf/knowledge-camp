@@ -18,6 +18,9 @@
         new Swiper ".swiper-container",{
           pagination: ".swiper-pagination",
           paginationClickable: true,
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          spaceBetween: 30
           #direction: "vertical"
         }
 
@@ -33,6 +36,8 @@
             }
           </div>
           <div className="swiper-pagination"></div>
+          <div className="swiper-button-next"></div>
+          <div className="swiper-button-prev"></div>
         </div>
 
     Tabs: React.createClass
@@ -67,9 +72,9 @@
 
         <div className={cls} data-tab={@props.tab || "1"}>
           {
-            @props.articles.map (article)->
-              <div className="item">
-                <a className="ui tiny image" key={article.title}>
+            @props.articles.map (article, index)->
+              <div className="item" key="item_#{index}">
+                <a className="ui tiny image">
                   <img src={article.img} />
                 </a>
                 <a className="middle aligned content"  href={article.show_url}>
