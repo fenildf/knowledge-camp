@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   get '/search/:query' => 'search#search', as: :search
 
-  devise_for :users, :skip => :all
+  devise_for :users, :skip => :all,
+    only: :omniauth_callbacks,
+    controllers: {
+      omniauth_callbacks: 'authentications'
+    }
 
   # 文件上传
   mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload

@@ -28,6 +28,10 @@ development:
   redis_port: 6379
   redis_db: 0
 
+  # 微信登录
+  WECHAT_APPID: test
+  WECHAT_APPSECRET: test
+
 test:
   static_file_url_prefix: static_files/test
   upload_file_base_path: <%= Rails.root.join("public/static_files/test") %>

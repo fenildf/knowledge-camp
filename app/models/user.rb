@@ -3,7 +3,8 @@ class User
   include Mongoid::Timestamps
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   field :name, type: String
 
@@ -24,6 +25,9 @@ class User
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
+
+  # oauth2 登录信息
+  has_many :authentications
 
   validates :name, presence: true
   validates :name, length: {in: 2..20}, :if => Proc.new {|user|

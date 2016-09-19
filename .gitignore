@@ -41,3 +41,5 @@ selenium/
 
 # rvm
 .ruby-gemset
+
+.byebug_history
