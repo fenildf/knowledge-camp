@@ -73,13 +73,18 @@
         <div className={cls} data-tab={@props.tab || "1"}>
           {
             @props.articles.map (article, index)->
-              <div className="item" key="item_#{index}">
+              <div className="article" key="item_#{index}">
                 <a className="ui tiny image">
                   <img src={article.img} />
                 </a>
-                <a className="middle aligned content"  href={article.show_url}>
-                  {article.title}
-                </a>
+                <div className="content"  href={article.show_url}>
+                  <a className="header"  href={article.show_url}>
+                    {article.title}
+                  </a>
+                  <div class="description">
+                    {article.desc}
+                  </div>
+                </div>
               </div>
           }
         </div>
