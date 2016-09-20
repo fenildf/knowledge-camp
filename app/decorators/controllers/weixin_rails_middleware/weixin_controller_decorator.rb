@@ -5,6 +5,8 @@
 WeixinRailsMiddleware::WeixinController.class_eval do
 
   def reply
+    # 持久化记录微信所有事件
+    WechatReplyRecord.create keyword: @keyword, event: @weixin_message.MsgType, origin: @weixin_message.as_json
     render xml: send("response_#{@weixin_message.MsgType}_message", {})
   end
 
