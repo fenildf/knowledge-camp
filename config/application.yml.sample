@@ -29,7 +29,7 @@ development:
   redis_db: 0
 
   # 微信登录(填服务号内容)
-  WECHAT_AUTO_LOGIN: false
+  WECHAT_AUTO_LOGIN: false # false为不自动登录，其余或者不填则为使用微信自动登录
   WECHAT_APPID: test
   WECHAT_APPSECRET: test
 
