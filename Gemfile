@@ -127,6 +127,8 @@ gem 'omniauth-oauth2'#, git: 'git://github.com/intridea/omniauth-oauth2.git'
 gem "omniauth-wechat-oauth2"
 # 浏览器类型判断, 判断是微信则自动跳转登录需要
 gem 'agent_orange'
+# 微信回复处理
+gem 'weixin_rails_middleware', '~> 1.3.2'
 
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'

@@ -5,6 +5,7 @@ end
 routes_draw :mockup
 
 Rails.application.routes.draw do
+  mount WeixinRailsMiddleware::Engine, at: "/"
   root 'index#index'
 
   get '/search/:query' => 'search#search', as: :search
@@ -147,4 +148,7 @@ Rails.application.routes.draw do
     end
 
   end
+
+  # 微信回复处理
+  mount WeixinRailsMiddleware::Engine, at: "/"
 end
