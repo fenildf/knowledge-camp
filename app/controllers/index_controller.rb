@@ -3,12 +3,13 @@ class IndexController < ApplicationController
 
   def index
     if current_user.present?
-      if current_user.role.teller?
-        return redirect_to my_business_categories_path
-      end
-      if current_user.role.supervisor? || current_user.role.admin?
-        return redirect_to manager_dashboard_path
-      end
+      return redirect_to landing_articles_path
+      #if current_user.role.teller?
+        #return redirect_to my_business_categories_path
+      #end
+      #if current_user.role.supervisor? || current_user.role.admin?
+        #return redirect_to manager_dashboard_path
+      #end
     else
       redirect_to sign_in_path
     end

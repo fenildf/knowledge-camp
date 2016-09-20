@@ -16,6 +16,13 @@ Bundler.require(*Rails.groups)
 
 module KnowledgeCamp
   class Application < Rails::Application
+    config.to_prepare do
+      # Load application's model / class decorators
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+    end
+
     config.web_console.whitelisted_ips = '0.0.0.0/0'
     config.web_console.development_only = false
 

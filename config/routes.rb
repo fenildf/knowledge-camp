@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   get '/search/:query' => 'search#search', as: :search
 
-  devise_for :users, :skip => :all
+  devise_for :users, :skip => :all,
+    only: :omniauth_callbacks,
+    controllers: {
+      omniauth_callbacks: 'authentications'
+    }
 
   # 文件上传
   mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload
@@ -63,9 +67,15 @@ Rails.application.routes.draw do
     get :hmdm, on: :collection
   end
 
+  resources :articles do
+    get :landing, on: :collection
+  end
+
   scope :path => "/manager", module: 'manager', as: :manager do
     get "dashboard" => "dashboard#index"
 
+    # 文章维护
+    resources :articles
     # 督导员维护
     resources :supervisors
     # 柜员维护
@@ -137,4 +147,7 @@ Rails.application.routes.draw do
     end
 
   end
+
+  # 微信回复处理
+  mount WeixinRailsMiddleware::Engine, at: "/"
 end

@@ -1,6 +1,7 @@
 class DataFormer
   include DataFormerConfig
 
+  include ArticleFormer
   include CourseFormer
   include ChapterFormer
   include WareFormer

@@ -4,7 +4,7 @@ class ManagerPolicy < ApplicationPolicy
   end
 
   def show?
-    admin? and scope.where(:id => record.id).exists?
+    admin?
   end
 
   def create?

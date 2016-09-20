@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
+  include DeviceAnalyst
   include Pundit
+  include MongoidReactScaffoldHelper
+  include WechatHelper
   protect_from_forgery with: :exception
+
+  # 如果判断是微信，则跳转到微信登录 WechatHelper
+  before_action :wechat_login, if: :is_wechat?
 
   # 自定义登录后页面跳转
   def after_sign_in_path_for(resource)
@@ -43,11 +49,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def paginate_data kaminari_scope
+    {
+      total_pages: kaminari_scope.num_pages,
+      current_page: kaminari_scope.current_page,
+      per_page: kaminari_scope.size,
+      total_count: kaminari_scope.total_count
+    }
+  end
+
   # 注册请求允许 user[:name]
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) << :name
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     end
 
     def pundit_manager

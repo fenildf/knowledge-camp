@@ -9,7 +9,7 @@ jQuery.open_modal = (component, config={})->
   """
     .appendTo document.body
 
-  a = React.render component, $dom.find('.content')[0]
+  a = ReactDOM.render component, $dom.find('.content')[0]
   a.setState 
     $modal_dom: $dom
     close: (func)->
@@ -40,7 +40,7 @@ jQuery.open_large_modal = (component, config={})->
   """
     .appendTo document.body
 
-  a = React.render component, $dom.find('.content')[0]
+  a = ReactDOM.render component, $dom.find('.content')[0]
   a.setState 
     $modal_dom: $dom
     close: (func)->

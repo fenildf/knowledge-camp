@@ -38,3 +38,8 @@ public/assets/
 backup
 
 selenium/
+
+# rvm
+.ruby-gemset
+
+.byebug_history

@@ -19,12 +19,19 @@ group :development do
   # 去除测试环境 assets提示
   gem 'quiet_assets'
   gem 'pry-rails'
+
+  # 报错时，浏览器直接执行命令DEBUG
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
   gem "spring"
   gem "pry"
   gem "pry-byebug"
+
+  # 完善rspec for rails测试
+  gem 'shoulda-matchers'
 end
 
 group :test do
@@ -40,7 +47,7 @@ end
 # -------------
 
 gem "figaro", "~> 1.1.1"
-gem "devise", "3.5.2"
+gem "devise", "4.2.0"
 gem "kaminari", "~> 0.15.1"
 gem "haml"
 gem "mongoid", "~> 4.0.0"
@@ -94,7 +101,7 @@ gem 'phone_number_check_mod',
 gem 'sprockets', '3.4.0'
 gem 'sprockets-rails', '2.3.3'
 
-gem 'react-rails', '1.2.0'
+gem 'react-rails', '~> 1.8.0'
 gem 'sprockets-coffee-react', '3.0.1'
 
 # 控制台
@@ -104,6 +111,24 @@ gem 'web-console', '~> 2.0'
 gem 'non-stupid-digest-assets'
 
 gem "pundit", "1.1.0"
+
+# 手脚架
+gem 'mongoid_react_scaffold',
+  github: 'mindpin/mongoid_react_scaffold',
+  ref: "3c6a8b7"
+
+# 以下为其余依赖项
+# for semantic
+gem 'semantic-ui-sass', '~> 2.2.2.2'
+
+#omniauth 微信登录
+gem 'omniauth'
+gem 'omniauth-oauth2'#, git: 'git://github.com/intridea/omniauth-oauth2.git'
+gem "omniauth-wechat-oauth2"
+# 浏览器类型判断, 判断是微信则自动跳转登录需要
+gem 'agent_orange'
+# 微信回复处理
+gem 'weixin_rails_middleware', '~> 1.3.2'
 
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
@@ -115,3 +140,8 @@ gem 'rails-assets-URIjs'
 gem 'rails-assets-immutable'
 # https://github.com/Olical/EventEmitter/blob/master/docs/guide.md
 gem 'rails-assets-eventEmitter'
+# https://github.com/chjj/marked
+gem 'rails-assets-marked'
+# 滚动翻页
+# https://github.com/seatgeek/react-infinite
+gem 'rails-assets-react-infinite'
