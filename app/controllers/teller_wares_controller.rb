@@ -1,5 +1,5 @@
 class TellerWaresController < ApplicationController
-  before_filter :pundit_wares
+  before_action :pundit_wares
   layout "new_version_base"
 
   def show

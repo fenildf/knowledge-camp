@@ -1,5 +1,5 @@
 # coding: utf-8
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 # Pick the frameworks you want:
 require "active_model/railtie"
@@ -23,8 +23,8 @@ module KnowledgeCamp
       end
     end
 
-    config.web_console.whitelisted_ips = '0.0.0.0/0'
-    config.web_console.development_only = false
+    #config.web_console.whitelisted_ips = '0.0.0.0/0'
+    #config.web_console.development_only = false
 
     config.assets.precompile += [
       'mockup.css',
@@ -41,5 +41,8 @@ module KnowledgeCamp
     config.to_prepare do
       DeviseController.respond_to :html, :json
     end
+
+    # belongs_to 默认设置为非必填
+    config.mongoid.belongs_to_required_by_default = false
   end
 end

@@ -1,6 +1,6 @@
 class Manager::DashboardController < Manager::ApplicationController
   include ApplicationHelper
-  skip_before_filter :pundit_manager
+  skip_before_action :pundit_manager
 
   def index
     authorize :manager_dashboard, :index?

@@ -2,8 +2,11 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
+    Rails.logger.debug 'initialize'
     @user = user
     @record = record
+    Rails.logger.debug @user
+    Rails.logger.debug @record
   end
 
   def index?
@@ -53,6 +56,8 @@ class ApplicationPolicy
 
   protected
   def admin?
+    Rails.logger.debug 'admin?'
+    Rails.logger.debug @user
     user.admin?
   end
 

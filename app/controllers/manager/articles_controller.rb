@@ -1,4 +1,6 @@
 class Manager::ArticlesController < Manager::ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def index
     @page_name = "manager_articles"
     manager_articles = Article.page(params[:page])
