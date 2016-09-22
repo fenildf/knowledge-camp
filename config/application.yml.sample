@@ -28,9 +28,16 @@ development:
   redis_port: 6379
   redis_db: 0
 
-  # 微信登录
+  # 微信登录(填服务号内容)
+  WECHAT_AUTO_LOGIN: false # false为不自动登录，其余或者不填则为使用微信自动登录
   WECHAT_APPID: test
   WECHAT_APPSECRET: test
+
+  # 微信回复回调(填订阅号内容)
+  WECHAT_REPLY_APPID: test
+  WECHAT_REPLY_APPSECRET: test
+  WECHAT_TOKEN: test
+  WECHAT_ASE_KEY: test
 
 test:
   static_file_url_prefix: static_files/test
