@@ -1,5 +1,5 @@
 class Manager::Finance::TellerWaresController < ApplicationController
-  before_filter :pundit_manager
+  before_action :pundit_manager
   layout "new_version_manager"
 
   def index

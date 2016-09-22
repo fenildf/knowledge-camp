@@ -4,8 +4,8 @@ ruby '2.2.5'
 
 source "https://ruby.taobao.org"
 
-gem "rails", "4.2.3"
-gem 'sass-rails', '~> 5.0'
+gem "rails", "5.0.0.1"
+gem 'sass-rails', '~> 5.0.6'
 gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.1.0"
 gem "jquery-rails"
@@ -17,7 +17,7 @@ gem 'therubyracer', platforms: :ruby
 
 group :development do
   # 去除测试环境 assets提示
-  gem 'quiet_assets'
+  #gem 'quiet_assets'
   gem 'pry-rails'
 
   # 报错时，浏览器直接执行命令DEBUG
@@ -36,8 +36,8 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.0'
-  gem "database_cleaner", "~> 1.2.0"
+  gem 'rspec-rails'
+  gem "database_cleaner", "~> 1.5.3"
   gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'headless'
@@ -50,11 +50,14 @@ gem "figaro", "~> 1.1.1"
 gem "devise", "4.2.0"
 gem "kaminari", "~> 0.15.1"
 gem "haml"
-gem "mongoid", "~> 4.0.0"
-gem "bson_ext"
+gem "mongoid",# "6.0.0.rc0"
+  github: "mongodb/mongoid",
+  tag: "v6.0.0"
+#gem "bson_ext"
 gem "unicorn"
 gem "streamio-ffmpeg"
 gem 'redis', '~>3.2'
+gem 'enumerize', "2.0.0"
 # -------------
 gem "mina", "0.3.7"
 
@@ -73,15 +76,15 @@ gem 'file-part-upload',
 # -----金融学院相关
 gem 'kc_courses',
     github: 'mindpin/kc_courses',
-    ref: "139166f"
+    ref: "30146cb"
 
 gem 'bank',
     github: "mindpin/bank",
-    ref: "b749551"
+    ref: "e740302"
 
 gem 'enterprise_position_level',
     github: "mindpin/enterprise_position_level",
-    ref: "541bf8a"
+    ref: "a7c73e6"
 
 gem 'question_mod',
     github: "fushang318/question_mod",
@@ -105,7 +108,7 @@ gem 'react-rails', '~> 1.8.0'
 gem 'sprockets-coffee-react', '3.0.1'
 
 # 控制台
-gem 'web-console', '~> 2.0'
+#gem 'web-console', '~> 2.3.0'
 
 # 去除静态资源指纹
 gem 'non-stupid-digest-assets'
