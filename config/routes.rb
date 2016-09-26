@@ -67,8 +67,9 @@ Rails.application.routes.draw do
     get :hmdm, on: :collection
   end
 
-  resources :articles do
+  resources :articles, shallow: true do
     get :landing, on: :collection
+    resources :comments, shallow: true
   end
 
   scope :path => "/manager", module: 'manager', as: :manager do

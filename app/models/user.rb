@@ -29,6 +29,8 @@ class User
   # oauth2 登录信息
   has_many :authentications
 
+  has_many :comments
+
   validates :name, presence: true
   validates :name, length: {in: 2..20}, :if => Proc.new {|user|
     user.name.present?

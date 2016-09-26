@@ -8,6 +8,8 @@ class Article
   field :content, type: String
   belongs_to :articleable, polymorphic: true
 
+  has_many :comments, as: :commentable
+
   attr_accessor :ware_id
 
   validates :title, presence: true
