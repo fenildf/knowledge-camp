@@ -21,7 +21,7 @@
         <ArticlePage.Content content={@state.content} />
       </div>
 
-      <CommentsWithForm url={@props.data.comments_url} />
+      <CommentsWithForm url={@props.data.comments_url} create_url={@props.data.create_comment_url} />
     </div>
 
   statics:

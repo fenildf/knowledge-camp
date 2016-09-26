@@ -18,6 +18,12 @@
       console.log res
       alert "读取列表失败"
 
+  handleCreated: (comment)->
+    comments = Immutable.fromJS @state.comments
+    comments = comments.push comment
+    @setState
+      comments: comments.toJS()
+
   componentDidMount: ->
     @load()
 
@@ -40,12 +46,13 @@
             else
               if @state.comments.length > 0
                 for comment in @state.comments
-                  console.log comment
                   <CommentsWithForm.Comment data={comment} key={comment.id} />
               else
                 "暂无评论"
           }
         </div>
+
+        <CommentsWithForm.Form url={@props.create_url} handleCreated={@handleCreated} />
       </div>
     </div>
 
@@ -86,3 +93,33 @@
             </div>
           </div>
         </div> 
+
+    Form: React.createClass
+      done: (res)->
+        @props.handleCreated(res.comment) if @props.handleCreated and res.comment
+        @refs.form.refs.form.clear()
+
+      render: ->
+        console.log @props
+        {
+          TextAreaField
+          Submit
+        } = DataForm
+
+        layout =
+          label_width: '100px'
+
+        <div className="ui reply form">
+          <h3 className='ui header dividing'>回复</h3>
+          <SimpleDataForm
+            model='comment'
+            post={@props.url}
+            done={@done}
+            ref="form"
+          >
+
+            <TextAreaField {...layout} label='内容：' name='content' required />
+            <Submit {...layout} text='确定保存' />
+          </SimpleDataForm>
+        </div>
+

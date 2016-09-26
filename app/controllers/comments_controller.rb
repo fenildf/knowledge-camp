@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
     # TODO 通用化处理，抽离
     article = Article.find params[:article_id]
-    comments = article.comments.recent #.page(params[:page])
+    comments = article.comments#.recent #.page(params[:page])
 
     items = comments.map do |comment|
       DataFormer.new(comment)
@@ -16,8 +16,6 @@ class CommentsController < ApplicationController
 
     @component_data = {
       comments: items,
-      new_url: new_article_comment_path(article),
-      #paginate: DataFormer.paginate_data(comments)
     }
 
     render json: {
