@@ -12,7 +12,6 @@
     content: null
 
   render: ->
-    console.log @props
     <div className='article-page'>
       <div className="segment ui">
         <h1 className="ui header center aligned">
@@ -21,6 +20,8 @@
 
         <ArticlePage.Content content={@state.content} />
       </div>
+
+      <CommentsWithForm url={@props.data.comments_url} />
     </div>
 
   statics:

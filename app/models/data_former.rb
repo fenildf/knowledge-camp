@@ -22,6 +22,8 @@ class DataFormer
 
   include FileEntityFormer
 
+  include CommentFormer
+
   def self.paginate_data(models)
     begin
       {

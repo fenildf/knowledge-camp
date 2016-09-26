@@ -38,7 +38,8 @@ class ArticlesController < ApplicationController
         .data
 
     @component_data = {
-      article: item
+      article: item,
+      comments_url: article_comments_path(article)
     }
 
     render "/react/page"

@@ -1,0 +1,88 @@
+@CommentsWithForm = React.createClass
+  load: ->
+    # 读取评论
+    jQuery.ajax
+      url: @props.url
+      type: "GET"
+    .done (res)=>
+      if res?.data?.comments and res.data.comments.length > 0
+        comments = Immutable.fromJS @state.comments
+        comments = comments.concat res.data.comments
+        @setState
+          comments: comments.toJS()
+          loading: false
+      else
+        @setState
+          loading: false
+    .fail (res)->
+      console.log res
+      alert "读取列表失败"
+
+  componentDidMount: ->
+    @load()
+
+  getInitialState: ->
+    content: null
+    comments: []
+    loading: true
+
+  render: ->
+    <div className='comments-with-form ui segment'>
+      <div className="ui comments">
+        <h3 className="ui header dividing">
+          评论
+        </h3>
+
+        <div className="list">
+          {
+            if @state.loading
+              <Loading />
+            else
+              if @state.comments.length > 0
+                for comment in @state.comments
+                  console.log comment
+                  <CommentsWithForm.Comment data={comment} key={comment.id} />
+              else
+                "暂无评论"
+          }
+        </div>
+      </div>
+    </div>
+
+  statics:
+    Comments: React.createClass
+      load: ->
+
+      componentDidMount: ->
+        @load()
+
+      getInitialState: ->
+        comments: null
+
+      render: ->
+        # 是否已经读取
+        if @state.comments
+          for comment in @state.comments
+            <CommentsWithForm.Comment data={comment} />
+        #else
+          ## 显示正在读取
+          #<Loading />
+
+    Comment: React.createClass
+      render: ->
+        <div className="comment">
+          <a className="avatar">
+            <img src="http://semantic-ui.com/images/avatar/small/elliot.jpg" />
+          </a>
+          <div className="content">
+            <a className="author">{@props.data.user_name}</a>
+            <div className="metadata">
+              <span className="date">
+                <UTCDateTime datetime={@props.data.created_at} />
+              </span>
+            </div>
+            <div className="text">
+              {@props.data.content}
+            </div>
+          </div>
+        </div> 
