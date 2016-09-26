@@ -21,7 +21,15 @@
         <ArticlePage.Content content={@state.content} />
       </div>
 
-      <CommentsWithForm url={@props.data.comments_url} create_url={@props.data.create_comment_url} />
+      {
+        params = 
+          url: @props.data.comments_url
+          create_url: @props.data.create_comment_url
+          signed_in: @props.data.signed_in
+          sign_in_url: @props.data.sign_in_url
+
+        <CommentsWithForm {...params} />
+      }
     </div>
 
   statics:

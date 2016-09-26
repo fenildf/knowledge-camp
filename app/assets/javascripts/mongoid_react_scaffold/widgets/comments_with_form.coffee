@@ -52,7 +52,12 @@
           }
         </div>
 
-        <CommentsWithForm.Form url={@props.create_url} handleCreated={@handleCreated} />
+        {
+          if @props.signed_in
+            <CommentsWithForm.Form url={@props.create_url} handleCreated={@handleCreated} />
+          else
+            <CommentsWithForm.SignInWarning url={@props.sign_in_url} />
+        }
       </div>
     </div>
 
@@ -100,7 +105,6 @@
         @refs.form.refs.form.clear()
 
       render: ->
-        console.log @props
         {
           TextAreaField
           Submit
@@ -123,3 +127,13 @@
           </SimpleDataForm>
         </div>
 
+
+    SignInWarning: ->
+      render: ->
+        <div className="">
+          <h3 className='ui header dividing'>回复</h3>
+          <p>
+            登录后才能评论
+          </p>
+          <a href={@props.url}>点此登录</a>
+        </div>
